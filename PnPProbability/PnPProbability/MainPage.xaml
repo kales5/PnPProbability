@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PnPProbability"
+             x:Class="PnPProbability.MainPage"
+            Title="PnP Propabilites">
+
+    <TabbedPage.Children>
+        <local:DeadLandsPage Title="Deadlands"/>
+        <local:DsaPage Title="DSA"/>
+        <local:SplittermondPage Title="Splittermond"/>
+    </TabbedPage.Children>
+
+</TabbedPage>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PnPProbability;assembly=PnPProbability"
+             xmlns:vm="clr-namespace:PnPProbability.ViewModel;assembly=PnPProbability"
+             x:Class="PnPProbability.DsaPage">
+    <ContentPage.BindingContext>
+        <vm:DSAViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Margin="10" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Margin="10,0" Text="1. Eigenschaft" Grid.Row="0" Grid.Column="0"/>
+                <Entry Margin="10" WidthRequest="92" Text="{Binding Eigentschaft1, Mode=TwoWay}" Keyboard="Numeric" Grid.Row="1" Grid.Column="0"/>
+                <Label Margin="10,0" Text="2. Eigenschaft" Grid.Row="0" Grid.Column="1"/>
+                <Entry Margin="10" WidthRequest="92" Text="{Binding Eigentschaft2, Mode=TwoWay}" Keyboard="Numeric" Grid.Row="1" Grid.Column="1"/>
+                <Label Margin="10,0" Text="3. Eigenschaft" Grid.Row="0" Grid.Column="2"/>
+                <Entry  Margin="10" WidthRequest="92" Text="{Binding Eigentschaft3, Mode=TwoWay}" Keyboard="Numeric" Grid.Row="1" Grid.Column="2"/>
+            </Grid>
+            <local:ResultViewControl Grid.Row="1" OutputList="{Binding ViewModel.OutputList}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

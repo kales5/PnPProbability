@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PnPProbability;assembly=PnPProbability"
+             xmlns:vm="clr-namespace:PnPProbability.ViewModel;assembly=PnPProbability"
+             xmlns:converter="clr-namespace:PnPProbability.Converter;assembly=PnPProbability"
+             x:Class="PnPProbability.SplittermondPage">
+    <ContentPage.BindingContext>
+        <vm:SplittermondViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:SplitterMondRollTypeConverter x:Key="splitterMondRollTypeConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Margin="10" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Margin="10,0" Text="1. Eigenschaft" Grid.Row="0" Grid.Column="0"/>
+                <Entry Margin="10,0" WidthRequest="92" Text="{Binding Eigentschaft1, Mode=TwoWay}" Keyboard="Numeric" Grid.Row="1" Grid.Column="0"/>
+                <Label Margin="10,0" Text="2. Eigenschaft" Grid.Row="0" Grid.Column="1"/>
+                <Entry Margin="10,0"  WidthRequest="92" Text="{Binding Eigentschaft2, Mode=TwoWay}" Keyboard="Numeric" Grid.Row="1" Grid.Column="1"/>
+                <Label Margin="10,0" Text="Schwierigkeit" Grid.Row="0" Grid.Column="2"/>
+                <Entry Margin="10,0" WidthRequest="92" Text="{Binding Difficulty, Mode=TwoWay}" Keyboard="Numeric" Grid.Row="1" Grid.Column="2"/>
+                <Label Margin="10,0" Text="Wurfart" Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center"/>
+                <Picker WidthRequest="92" Grid.Row="3" Grid.Column="1"
+                      ItemsSource="{Binding RollTypes}" 
+                      SelectedItem="{Binding RollType}"/>
+            </Grid>
+            <local:ResultViewControl Grid.Row="2" OutputList="{Binding OutputList}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

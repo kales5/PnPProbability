@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             xmlns:local="clr-namespace:PnPProbability;assembly=PnPProbability"
+             xmlns:vm="clr-namespace:PnPProbability.ViewModel;assembly=PnPProbability"
+             xmlns:converter="clr-namespace:PnPProbability.Converter;assembly=PnPProbability"
+             x:Class="PnPProbability.DeadLandsPage">
+    <ContentPage.BindingContext>
+        <vm:DeadlandsViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Margin="10" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Margin="10,0" Text="Talent" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center"/>
+                <Picker Grid.Row="0" Grid.Column="1"
+                      ItemsSource="{Binding TalentValues}" 
+                      SelectedItem="{Binding Talent}"/>                
+                <Label Margin="10,0" Text="Wildcard" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center"/>
+                <Switch  Margin="10,0"  IsToggled="{Binding HasWildCard, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"/>
+                
+            </Grid>
+            <local:ResultViewControl Grid.Row="2" OutputList="{Binding OutputList}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

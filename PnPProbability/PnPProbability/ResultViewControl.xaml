@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PnPProbability.ResultViewControl"
+             xmlns:converter="clr-namespace:PnPProbability.Converter;assembly=PnPProbability">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converter:StringFormatConverter x:Key="stringFormatConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ListView Margin="10" ItemsSource="{Binding OutputList}">
+                <ListView.Header>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Name="Taw" Width="44"/>
+                                <ColumnDefinition x:Name="Propablity" Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout  Grid.Column="0" Padding="5">
+                                <Label Text="Taw" Margin="0,0,5,0" FontAttributes="Bold"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" Padding="5">
+                                <Label Text="Wahscheinlichkeit" FontAttributes="Bold" Margin="5,0,0,0"/>
+                            </StackLayout>
+                        </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="44"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout  Grid.Column="0" Padding="5">
+                                    <Label Text="{Binding TaW}" Margin="0,0,5,0"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1"  Padding="5">
+                                    <Label Text="{Binding Propability, Converter={StaticResource stringFormatConverter}, ConverterParameter=\{0:P2\}}"
+                                        Margin="5,0,0,0"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+</StackLayout>
